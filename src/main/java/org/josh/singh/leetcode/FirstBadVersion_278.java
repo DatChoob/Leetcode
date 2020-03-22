@@ -28,12 +28,15 @@ public class FirstBadVersion_278 extends VersionControl_FirstBadVersion_278 {
         return n;
     }
 
-    //Time limit Exceeded
+    /**
+     * Runtime: 12 ms, faster than 97.58% of Java online submissions for First Bad Version.
+     * Memory Usage: 36.5 MB, less than 5.63% of Java online submissions for First Bad Version.
+     */
     public int firstBadVersion_recursive(int n) {
         int low = 1;
         int high = n;
         while (low < high) {
-            int mid = low + (high - low) >>> 1;
+            int mid = low + (high - low) / 2;
 
             if (isBadVersion(mid)) {
                 high = mid;
