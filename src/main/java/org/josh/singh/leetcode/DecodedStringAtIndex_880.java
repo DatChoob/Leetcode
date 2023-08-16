@@ -30,10 +30,10 @@ public class DecodedStringAtIndex_880 {
             if (Character.isDigit(c)) {
                 decoded = duplicateCurrentDecodedString(decoded, Character.getNumericValue(c));
             } else {
-                decoded += c + "";
+                decoded += String.valueOf(c);
             }
         }
-        return decoded.charAt(K - 1) + "";
+        return String.valueOf(decoded.charAt(K - 1));
     }
 
     private String duplicateCurrentDecodedString(String decoded, int parseInt) {

@@ -1,5 +1,8 @@
 package org.josh.singh.leetcode;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Find the sum of all left leaves in a given binary tree.
  * <p>
@@ -26,6 +29,28 @@ public class SumOfLeftLeaves_404 {
         if (isLeafNode(root.left))
             sum = root.left.val;
         return sum + sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right);
+    }
+
+
+    public int sumOfLeftLeavesQueue(TreeNode root) {
+        if (root == null) return 0;
+        int sum = 0;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            if (isLeafNode(node.left)) {
+                sum += node.left.val;
+            }
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                queue.add(node.right);
+            }
+        }
+        return sum;
     }
 
     private boolean isLeafNode(TreeNode node) {
